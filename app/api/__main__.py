@@ -1,9 +1,10 @@
-from aiohttp.web import run_app
-from app.api import host, port, app
+from aiohttp.web import run_app, Application
+from app.api import host, port, AppConfig
 from app.api.routes import *
 
 
 def make_app():
+    app = Application(client_max_size=AppConfig.MAX_REQUEST_SIZE)
     app.router.add_view('/couriers', CouriersView)
     app.router.add_view('/couriers/{courier_id:\d+}', CourierView)
     app.router.add_view('/orders', OrdersView)
@@ -12,5 +13,7 @@ def make_app():
     return app
 
 
+app = make_app()
+
 if __name__ == '__main__':
-    run_app(make_app(), host=host, port=port)
+    run_app(app, host=host, port=port)

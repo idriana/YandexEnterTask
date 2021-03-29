@@ -8,4 +8,4 @@ logger = logging.getLogger("api_logger")
 
 host = AppConfig.HOST
 port = AppConfig.PORT
-app = Application(client_max_size=AppConfig.MAX_REQUEST_SIZE)
+
