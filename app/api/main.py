@@ -1,6 +1,6 @@
 from aiohttp.web import run_app, Application
-from ..api import host, port, AppConfig
-from ..api.routes import *
+from . import host, port, AppConfig
+from .routes import *
 import sys
 from pathlib import Path
 
