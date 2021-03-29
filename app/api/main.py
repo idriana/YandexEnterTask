@@ -9,7 +9,7 @@ host = AppConfig.HOST
 port = AppConfig.PORT
 
 from aiohttp.web import run_app
-from .routes import *
+from routes import *
 import sys
 from pathlib import Path
 
