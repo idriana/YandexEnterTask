@@ -1,4 +1,4 @@
-from app.api import logger, app
+from app.api import logger
 from aiohttp.web_response import json_response
 from aiohttp.web import View, HTTPBadRequest
 from app.db.Handlers.CourierHandler import courier_handler
@@ -81,11 +81,4 @@ class OrderCompleteView(View):
             raise HTTPBadRequest()
         order = order_complete_handler.complete(req)
         return json_response({"order_id": order})
-
-
-app.router.add_view('/couriers', CouriersView)
-app.router.add_view('/couriers/{courier_id:\d+}', CourierView)
-app.router.add_view('/orders', OrdersView)
-app.router.add_view('/orders/assign', OrdersAssignView)
-app.router.add_view('/orders/complete', OrderCompleteView)
 
