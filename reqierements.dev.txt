@@ -1,0 +1,5 @@
+SQLAlchemy~=1.4.3
+alembic~=1.5.8
+aiohttp~=3.7.4.post0
+aiomisc~=12.1.0
+aiounittest~=1.4.0

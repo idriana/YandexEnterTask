@@ -1,0 +1,3 @@
+SQLAlchemy~=1.4.3
+aiohttp~=3.7.4.post0
+aiomisc~=12.1.0
