@@ -234,57 +234,6 @@ class TestCourierHandler(aiounittest.AsyncTestCase):
                 self.assertTrue(resp.status == 400)
                 self.assertTrue(await resp.json() == {'validation_error': {'couriers': [{"id": 1}, {"id": 2}, {"id": 3}, {"id": 4}, {"id": 5}, {"id": 6}]}})
 
-    async def test_with_orders(self):
-        async with aiohttp.ClientSession() as client:
-            payload = {
-                "data": [
-                    {
-                        "order_id": 1,
-                        "weight": 0.23,
-                        "region": 1,
-                        "delivery_hours": ["09:00-10:00"]
-                    },
-                    {
-                        "order_id": 2,
-                        "weight": 15,
-                        "region": 2,
-                        "delivery_hours": ["12:00-13:00"]
-                    },
-                    {
-                        "order_id": 3,
-                        "weight": 0.01,
-                        "region": 3,
-                        "delivery_hours": ["14:00-15:00", "18:00-19:30"]
-                    }
-                ]
-            }
-            async with client.post(url=self.url + "orders", json=payload) as resp:
-                self.assertTrue(resp.status == 201)
-                self.assertTrue(await resp.json() == {"orders": [{"id": 1}, {"id": 2}, {"id": 3}]})
-            payload = {
-                "data": [
-                    {
-                        "courier_id": 1,
-                        "courier_type": "foot",
-                        "regions": [1, 2, 3],
-                        "working_hours": ["09:45-10:45", "11:15-12:15"]
-                    },
-                    {
-                        "courier_id": 2,
-                        "courier_type": "bike",
-                        "regions": [3],
-                        "working_hours": ["14:00-15:00"]
-                    },
-                    {
-                        "courier_id": 3,
-                        "courier_type": "car",
-                        "regions": [1, 2, 3, 4],
-                        "working_hours": ["18:00-19:00"]
-                    }]}
-            async with client.post(url=self.url + "orders", json=payload) as resp:
-                self.assertTrue(resp.status == 201)
-                self.assertTrue(await resp.json() == {"orders": [{"id": 1}, {"id": 2}, {"id": 3}]})
-
     def tearDown(self):
         session = sessionmaker(bind=engine)()
         session.query(Order).delete()

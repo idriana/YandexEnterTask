@@ -76,11 +76,9 @@ class CourierHandler(BaseHandler):
                 session.commit()
                 return {"couriers": ok}
             else:
-                session.rollback()
                 self.logger.warning("no data")
                 return {"error": []}
         else:
-            session.rollback()
             return {"error": errors}
 
 

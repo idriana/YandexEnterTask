@@ -66,7 +66,8 @@ class TestCourierEditHandler(aiounittest.AsyncTestCase):
             }
             async with client.post(url=self.url + "couriers", json=payload) as resp:
                 self.assertTrue(resp.status == 201)
-                self.assertTrue(await resp.json() == {'couriers': [{"id": 1}, {"id": 2}, {"id": 3}, {"id": 4}, {"id": 5}, {"id": 6}]})
+                self.assertTrue(await resp.json() == {
+                    'couriers': [{"id": 1}, {"id": 2}, {"id": 3}, {"id": 4}, {"id": 5}, {"id": 6}]})
 
     async def test_good_edit_requests(self):
         async with aiohttp.ClientSession() as client:
