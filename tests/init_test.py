@@ -1,7 +1,7 @@
 from aiohttp import ClientSession
 from asyncio import run
 from time import time
-from config import AppConfig
+from app.db.config import AppConfig
 
 url = AppConfig.URL
 

@@ -3,7 +3,7 @@ import aiohttp, asyncio
 from sqlalchemy.orm import sessionmaker
 from app.db import engine
 from app.db.Models import *
-from config import AppConfig
+from app.db.config import AppConfig
 
 
 async def myrange(start, stop=None, step=1):

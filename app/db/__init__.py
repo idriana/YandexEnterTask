@@ -1,4 +1,4 @@
-from config import DBConfig
+from app.db.config import DBConfig
 from sqlalchemy import create_engine, MetaData
 import logging
 from aiomisc.log import basic_config

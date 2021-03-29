@@ -1,4 +1,4 @@
-from config import AppConfig
+from app.db.config import AppConfig
 import logging
 from aiomisc.log import basic_config
 from aiohttp.web import Application
