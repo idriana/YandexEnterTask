@@ -3,7 +3,7 @@ from app.api import host, port, app
 from app.api.routes import *
 
 
-async def make_app():
+def make_app():
     app.router.add_view('/couriers', CouriersView)
     app.router.add_view('/couriers/{courier_id:\d+}', CourierView)
     app.router.add_view('/orders', OrdersView)
